@@ -79,7 +79,14 @@ public protocol ESRefreshAnimatorProtocol {
     
     // Current refresh state, default is .pullToRefresh
     var state: ESRefreshViewState {set get}
-    
+
+    var manualRefresh: Bool {get}
+}
+
+extension ESRefreshAnimatorProtocol {
+    public var manualRefresh: Bool {
+        return false
+    }
 }
 
 /**

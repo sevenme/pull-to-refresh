@@ -365,7 +365,8 @@ open class ESRefreshFooterView: ESRefreshComponent {
             }
         }
     }
-    
+
+
     open override var isHidden: Bool {
         didSet {
             if isHidden == true {
@@ -387,7 +388,28 @@ open class ESRefreshFooterView: ESRefreshComponent {
         self.handler = handler
         self.animator = ESRefreshFooterAnimator.init()
     }
-    
+
+    public convenience init(frame: CGRect, handler: @escaping ESRefreshHandler, animator: ESRefreshProtocol & ESRefreshAnimatorProtocol) {
+        self.init(frame: frame)
+        self.handler = handler
+        self.animator = animator
+        if animator.manualRefresh {
+            animator.view.isUserInteractionEnabled = true
+            let recognizer = UITapGestureRecognizer.init(target: self, action: #selector(animatorClick))
+            animator.view.addGestureRecognizer(recognizer)
+        }
+    }
+
+    func animatorClick() {
+        guard isRefreshing == false && isAutoRefreshing == false && noMoreData == false && isHidden == false else {
+            // 正在loading more或者内容为空时不相应变化
+            return
+        }
+
+        self.animator.refresh(view: self, stateDidChange: .refreshing)
+        self.startRefreshing()
+    }
+
     open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         /*
@@ -434,11 +456,17 @@ open class ESRefreshFooterView: ESRefreshComponent {
         }
         
         super.offsetChangeAction(object: object, change: change)
+
+        // 手动加载数据
+        if animator.manualRefresh {
+            return
+        }
         
         guard isRefreshing == false && isAutoRefreshing == false && noMoreData == false && isHidden == false else {
             // 正在loading more或者内容为空时不相应变化
             return
         }
+
 
         if scrollView.contentSize.height <= 0.0 || scrollView.contentOffset.y + scrollView.contentInset.top <= 0.0 {
             self.alpha = 0.0
