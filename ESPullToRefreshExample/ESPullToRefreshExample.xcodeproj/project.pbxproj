@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2869905B1EAF382C005B3E3E /* ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869905A1EAF382C005B3E3E /* ES.swift */; };
+		37A073BD1F26F476002EF10F /* ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869905A1EAF382C005B3E3E /* ES.swift */; };
 		5A180DBC1E80112D00F9EE1A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A180DBE1E80112D00F9EE1A /* Localizable.strings */; };
 		F63613701CDD9CCD00AA9AF7 /* MTRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F636136F1CDD9CCD00AA9AF7 /* MTRefreshHeaderAnimator.swift */; };
 		F63613721CDD9CD900AA9AF7 /* MTRefreshFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63613711CDD9CD900AA9AF7 /* MTRefreshFooterAnimator.swift */; };
@@ -388,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A073BD1F26F476002EF10F /* ES.swift in Sources */,
 				F69077351D0D0AF400BE91FE /* ESRefreshFooterAnimator.swift in Sources */,
 				F69077361D0D0AF400BE91FE /* ESRefreshHeaderAnimator.swift in Sources */,
 				F69077381D0D0AF400BE91FE /* ESPullToRefresh+Manager.swift in Sources */,
@@ -476,7 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.eggswift.ESPullToRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -498,7 +500,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.eggswift.ESPullToRefresh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -549,6 +551,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -591,6 +594,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -608,7 +612,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eggswift.ESPullToRefreshExample11;
 				PRODUCT_NAME = Example;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -624,7 +628,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eggswift.ESPullToRefreshExample11;
 				PRODUCT_NAME = Example;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

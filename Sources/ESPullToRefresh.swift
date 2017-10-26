@@ -107,10 +107,7 @@ public extension ES where Base: UIScrollView {
     /// Manual refresh
     public func startPullToRefresh() {
         DispatchQueue.main.async { [weak base] in
-            guard let weakSelf = base else {
-                return
-            }
-            weakSelf.header?.startRefreshing(isAuto: false)
+            base?.header?.startRefreshing(isAuto: false)
         }
     }
     
@@ -118,10 +115,7 @@ public extension ES where Base: UIScrollView {
     public func autoPullToRefresh() {
         if self.base.expired == true {
             DispatchQueue.main.async { [weak base] in
-                guard let weakSelf = base else {
-                    return
-                }
-                weakSelf.header?.startRefreshing(isAuto: true)
+                base?.header?.startRefreshing(isAuto: true)
             }
         }
     }
@@ -214,25 +208,12 @@ open class ESRefreshHeaderView: ESRefreshComponent {
         self.animator = ESRefreshHeaderAnimator.init()
     }
     
-    open override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-        /*
-         DispatchQueue.main.async {
-            [weak self] in
-            // It's better
-         }
-         */
-    }
-    
     open override func didMoveToSuperview() {
         super.didMoveToSuperview()
         DispatchQueue.main.async {
             [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.scrollViewBounces = weakSelf.scrollView?.bounces ?? true
-            weakSelf.scrollViewInsets = weakSelf.scrollView?.contentInset ?? UIEdgeInsets.zero
+            self?.scrollViewBounces = self?.scrollView?.bounces ?? true
+            self?.scrollViewInsets = self?.scrollView?.contentInset ?? UIEdgeInsets.zero
         }
     }
     
@@ -388,6 +369,7 @@ open class ESRefreshFooterView: ESRefreshComponent {
         self.handler = handler
         self.animator = ESRefreshFooterAnimator.init()
     }
+<<<<<<< HEAD
 
     public convenience init(frame: CGRect, handler: @escaping ESRefreshHandler, animator: ESRefreshProtocol & ESRefreshAnimatorProtocol) {
         self.init(frame: frame)
@@ -419,6 +401,8 @@ open class ESRefreshFooterView: ESRefreshComponent {
         }
          */
     }
+=======
+>>>>>>> eggswift/master
     
     /**
       In didMoveToSuperview, it will cache superview(UIScrollView)'s contentInset and update self's frame.
@@ -428,14 +412,11 @@ open class ESRefreshFooterView: ESRefreshComponent {
         super.didMoveToSuperview()
         DispatchQueue.main.async {
             [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.scrollViewInsets = weakSelf.scrollView?.contentInset ?? UIEdgeInsets.zero
-            weakSelf.scrollView?.contentInset.bottom = weakSelf.scrollViewInsets.bottom + weakSelf.bounds.size.height
-            var rect = weakSelf.frame
-            rect.origin.y = weakSelf.scrollView?.contentSize.height ?? 0.0
-            weakSelf.frame = rect
+            self?.scrollViewInsets = self?.scrollView?.contentInset ?? UIEdgeInsets.zero
+            self?.scrollView?.contentInset.bottom = (self?.scrollViewInsets.bottom ?? 0) + (self?.bounds.size.height ?? 0)
+            var rect = self?.frame ?? CGRect.zero
+            rect.origin.y = self?.scrollView?.contentSize.height ?? 0.0
+            self?.frame = rect
         }
     }
  

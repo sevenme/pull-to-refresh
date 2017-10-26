@@ -33,7 +33,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         
         self.webView.scrollView.es.addPullToRefresh {
             [weak self] in
-            self!.webView.loadRequest(request as URLRequest)
+            self?.webView.loadRequest(request as URLRequest)
         }
         self.webView.scrollView.es.startPullToRefresh()
     }
