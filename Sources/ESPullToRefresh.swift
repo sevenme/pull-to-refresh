@@ -369,7 +369,6 @@ open class ESRefreshFooterView: ESRefreshComponent {
         self.handler = handler
         self.animator = ESRefreshFooterAnimator.init()
     }
-<<<<<<< HEAD
 
     public convenience init(frame: CGRect, handler: @escaping ESRefreshHandler, animator: ESRefreshProtocol & ESRefreshAnimatorProtocol) {
         self.init(frame: frame)
@@ -382,7 +381,7 @@ open class ESRefreshFooterView: ESRefreshComponent {
         }
     }
 
-    func animatorClick() {
+    @objc func animatorClick() {
         guard isRefreshing == false && isAutoRefreshing == false && noMoreData == false && isHidden == false else {
             // 正在loading more或者内容为空时不相应变化
             return
@@ -401,8 +400,6 @@ open class ESRefreshFooterView: ESRefreshComponent {
         }
          */
     }
-=======
->>>>>>> eggswift/master
     
     /**
       In didMoveToSuperview, it will cache superview(UIScrollView)'s contentInset and update self's frame.
